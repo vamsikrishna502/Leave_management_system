@@ -1,0 +1,71 @@
+<div class="login-container">
+    <!-- <img
+        src="assets/images/cerebra-logo.png" C:\angular\leave-management-systemui-updated\src\assets\images\cerebra-logo.png
+        alt="Company Logo"
+        class="logo"
+      /> -->
+
+
+  <div class="login-card">
+
+    <!-- Left Section -->
+    <div class="left-panel">
+
+       <img src="assets/images/cerebra-logo.png"
+       alt="Cerebra IT Services logo"
+        title="Cerebra IT Services logo" />
+
+      <h1>Cerebra IT Services</h1>
+
+      <h2>Leave Management System</h2>
+
+      <p>
+        Manage employee leave requests quickly and efficiently.
+      </p>
+
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-panel">
+
+      <h2>Login</h2>
+
+      <div class="form-group">
+
+        <label>Username</label>
+
+        <input
+          type="text"
+          placeholder="Enter Username"
+          [(ngModel)]="username"
+        />
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Password</label>
+
+        <input
+          type="password"
+          placeholder="Enter Password"
+          [(ngModel)]="password"
+        />
+
+      </div>
+
+      <button
+        class="login-btn"
+        (click)="login()">
+
+        Login
+
+      </button>
+
+      <a href="#">Forgot Password?</a>
+
+    </div>
+
+  </div>
+
+</div>

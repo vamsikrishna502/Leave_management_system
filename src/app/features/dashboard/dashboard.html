@@ -1,0 +1,258 @@
+<!-- 
+
+
+
+    <div class="dashboard">
+
+        <h2>Leave Management Dashboard</h2>
+
+        <div class="cards">
+
+            <p-card>
+
+                <div class="card-content">
+
+                    <i class="pi pi-users"></i>
+
+                    <div>
+                        <h3>Total Employees</h3>
+                        <h1>{{ summary.totalEmployees ?? 0 }}</h1>
+                    </div>
+
+                </div>
+
+            </p-card>
+
+            <p-card>
+
+                <div class="card-content">
+
+                    <i class="pi pi-check-circle"></i>
+
+                    <div>
+                        <h3>Present</h3>
+                        <h1>{{ summary.present ?? 0 }}</h1>
+                    </div>
+
+                </div>
+
+            </p-card>
+
+            <p-card>
+
+                <div class="card-content">
+
+                    <i class="pi pi-calendar"></i>
+
+                    <div>
+                        <h3>On Leave</h3>
+                        <h1>{{ summary.onLeave ?? 0 }}</h1>
+                    </div>
+
+                </div>
+
+            </p-card>
+
+            <p-card>
+
+                <div class="card-content">
+
+                    <i class="pi pi-clock"></i>
+
+                    <div>
+                        <h3>Pending</h3>
+                        <h1>{{ summary.pending ?? 0 }}</h1>
+                    </div>
+
+                </div>
+
+            </p-card>
+
+        </div>
+
+        <p-card header="Recent Leave Requests">
+
+            <p-table [value]="leaveRequests">
+
+                <ng-template pTemplate="header">
+
+                    <tr>
+                        <th>Employee</th>
+                        <th>Leave Type</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Status</th>
+                    </tr>
+
+                </ng-template>
+
+                <ng-template pTemplate="body" let-row>
+
+                    <tr>
+
+                        <td>{{ row.employeeName || row.employee || row.name || 'N/A' }}</td>
+                        <td>{{ row.leaveType || row.type || row.leave_type || 'N/A' }}</td>
+                        <td>{{ row.fromDate || row.from || row.startDate || '-' }}</td>
+                        <td>{{ row.toDate || row.to || row.endDate || '-' }}</td>
+
+                        <td>
+
+                            <p-tag
+                                [value]="row.status || 'Pending'"
+                                [severity]="
+                                    (row.status || 'Pending') === 'Approved'
+                                        ? 'success'
+                                        : (row.status || 'Pending') === 'Pending'
+                                        ? 'warn'
+                                        : 'danger'
+                                ">
+                            </p-tag>
+
+                        </td>
+
+                    </tr>
+
+                </ng-template>
+
+            </p-table>
+
+        </p-card>
+
+    </div> -->
+
+    <div class="dashboard">
+
+    <h2>Leave Management Dashboard</h2>
+
+    <div class="cards">
+
+        <p-card>
+
+            <div class="card-content">
+
+                <i class="pi pi-users"></i>
+
+                <div>
+
+                    <h3>Total Employees</h3>
+
+                    <h1>{{ summary.totalEmployees }}</h1>
+
+                </div>
+
+            </div>
+
+        </p-card>
+
+        <p-card>
+
+            <div class="card-content">
+
+                <i class="pi pi-check-circle"></i>
+
+                <div>
+
+                    <h3>Present</h3>
+
+                    <h1>{{ summary.present }}</h1>
+
+                </div>
+
+            </div>
+
+        </p-card>
+
+        <p-card>
+
+            <div class="card-content">
+
+                <i class="pi pi-calendar"></i>
+
+                <div>
+
+                    <h3>On Leave</h3>
+
+                    <h1>{{ summary.onLeave }}</h1>
+
+                </div>
+
+            </div>
+
+        </p-card>
+
+        <p-card>
+
+            <div class="card-content">
+
+                <i class="pi pi-clock"></i>
+
+                <div>
+
+                    <h3>Pending</h3>
+
+                    <h1>{{ summary.pending }}</h1>
+
+                </div>
+
+            </div>
+
+        </p-card>
+
+    </div>
+
+
+    <p-card header="Recent Leave Requests">
+
+        <p-table [value]="leaveRequests">
+
+            <ng-template pTemplate="header">
+
+                <tr>
+
+                    <th>Employee</th>
+                    <th>Leave Type</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Status</th>
+
+                </tr>
+
+            </ng-template>
+
+
+            <ng-template pTemplate="body" let-row>
+
+                <tr>
+
+                    <td>{{ row.employeeName }}</td>
+
+                    <td>{{ row.leaveType }}</td>
+
+                    <td>{{ row.fromDate }}</td>
+
+                    <td>{{ row.toDate }}</td>
+
+                    <td>
+
+                        <p-tag
+                            [value]="row.status"
+                            [severity]="
+                                row.status === 'Approved'
+                                    ? 'success'
+                                    : row.status === 'Pending'
+                                    ? 'warn'
+                                    : 'danger'
+                            ">
+                        </p-tag>
+
+                    </td>
+
+                </tr>
+
+            </ng-template>
+
+        </p-table>
+
+    </p-card>
+
+</div>

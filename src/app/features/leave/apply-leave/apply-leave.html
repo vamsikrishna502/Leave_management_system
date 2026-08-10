@@ -1,0 +1,87 @@
+<p-card header="Apply Leave">
+
+    <div class="form-grid">
+
+        <!-- Employee -->
+        <div class="field">
+            <label for="employee">Employee</label>
+
+            <p-select
+                [options]="employees"
+                [(ngModel)]="leave.employee_id"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="Select Employee"
+                class="w-full">
+            </p-select>
+        </div>
+
+        <!-- Leave Type -->
+        <div class="field">
+            <label for="leaveType">Leave Type</label>
+
+            <p-select
+                [options]="leaveTypes"
+                [(ngModel)]="leave.leave_type_id"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="Select Leave Type"
+                class="w-full">
+            </p-select>
+        </div>
+
+        <!-- From Date -->
+        <div class="field">
+            <label for="fromDate">From Date</label>
+
+            <p-datepicker
+                [(ngModel)]="leave.from_date"
+                dateFormat="dd/mm/yy"
+                placeholder="Select From Date"
+                class="w-full">
+            </p-datepicker>
+        </div>
+
+        <!-- To Date -->
+        <div class="field">
+            <label for="toDate">To Date</label>
+
+            <p-datepicker
+                [(ngModel)]="leave.to_date"
+                dateFormat="dd/mm/yy"
+                placeholder="Select To Date"
+                class="w-full">
+            </p-datepicker>
+        </div>
+
+        <!-- Reason -->
+        <div class="field full-width">
+            <label for="reason">Reason</label>
+
+            <textarea
+                pTextarea
+                [(ngModel)]="leave.reason"
+                rows="5"
+                class="w-full"
+                placeholder="Enter reason">
+            </textarea>
+        </div>
+
+        <!-- Apply Button -->
+        <div class="button-section">
+            <p-button
+                label="Apply Leave"
+                icon="pi pi-check"
+                severity="primary"
+                  [style]="{
+                'background-color': '#6193e4',
+                'border-color': '#6193e4'
+                }"
+                (onClick)="applyLeave()">
+             
+            </p-button>
+        </div>
+
+    </div>
+
+</p-card>

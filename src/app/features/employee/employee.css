@@ -1,0 +1,58 @@
+/* Page */
+.employee-container {
+    padding: 20px;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+}
+
+/* Table */
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.employee-table thead {
+    background-color: #1976d2;
+    color: #ffffff;
+}
+
+.employee-table th {
+    padding: 14px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Body */
+.employee-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #111010;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Alternate Row Color */
+.employee-table tbody tr:nth-child(even) {
+    background-color: #f8f9fc;
+}
+
+/* Hover Effect */
+.employee-table tbody tr:hover {
+    background-color: #e3f2fd;
+    cursor: pointer;
+}
+
+/* Responsive */
+.table-responsive {
+    overflow-x: auto;
+}
+h1{
+    text-align: center;
+    color:#d4d0d0;
+    background-color: rgb(76, 76, 126)
+}

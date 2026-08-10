@@ -1,0 +1,23 @@
+:host {
+    display: block;
+    padding: 20px;
+}
+
+.card-header {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2563eb;
+    padding: 20px;
+}
+
+:host ::ng-deep .p-card {
+    border-radius: 12px;
+}
+
+:host ::ng-deep .p-datatable-header {
+    font-weight: bold;
+}
+
+:host ::ng-deep .p-paginator {
+    margin-top: 10px;
+}
