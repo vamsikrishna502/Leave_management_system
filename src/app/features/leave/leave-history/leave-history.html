@@ -1,81 +1,92 @@
-<p-card header="Leave History">
+<p-table
+    [value]="leaveHistory"
+    [tableStyle]="{ 'min-width': '60rem' }"
+    stripedRows
+    responsiveLayout="scroll">
 
-    <p-table
-        [value]="leaveHistory"
-        [tableStyle]="{ 'min-width': '60rem' }"
-        stripedRows
-        responsiveLayout="scroll">
+    <!-- Header -->
+    <ng-template #header>
 
-        <!-- Header -->
-        <ng-template pTemplate="header">
+        <tr>
+            <th>Employee ID</th>
+            <th>Employee Name</th>
+            <th>Leave Type</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Total Days</th>
+            <th>Reason</th>
+            <th>Status</th>
+        </tr>
 
-            <tr>
-                 <th>Employee ID</th>
-                <th>Employee Name</th>
-                <th>Leave Type</th>
-                <th>From Date</th>
-                <th>To Date</th>
-                <th>Total Days</th>
-                <th>Reason</th>
-                <th>Status</th>
+    </ng-template>
 
-            </tr>
 
-        </ng-template>
+    <!-- Body -->
+    <ng-template #body let-row>
 
-        <!-- Body -->
-        <ng-template pTemplate="body" let-row>
+        <tr>
 
-            <tr>
-               <td>EMP{{ row.employee_id | number:'3.0-0' }}</td>
+            <td>
+                EMP{{ row.employee_id | number:'3.0-0' }}
+            </td>
 
-                <td>{{ row.employee_name }}</td>
+            <td>
+                {{ row.employee_name }}
+            </td>
 
-                <td>{{ row.leave_name }}</td>
+            <td>
+                {{ row.leave_name }}
+            </td>
 
-                <td>{{ row.from_date }}</td>
+            <td>
+                {{ row.from_date }}
+            </td>
 
-                <td>{{ row.to_date }}</td>
+            <td>
+                {{ row.to_date }}
+            </td>
 
-                <td>{{ row.total_days }}</td>
+            <td>
+                {{ row.total_days }}
+            </td>
 
-                <td>{{ row.reason }}</td>
+            <td>
+                {{ row.reason }}
+            </td>
 
-                <td>
+            <td>
 
-                    <p-button
-                            [label]="row.status"
-                            /* [severity]="
-                                row.status === 'Approved'
-                                    ? 'success'
-                                    : row.status === 'Pending'
-                                    ? 'warn'
-                                    : 'danger'
-                            " */
-                            [outlined]="true"
-                            [disabled]="false"
-                            (click)="showStatus()">
-                        </p-button>
+                <p-button
+                    [label]="row.status"
+                    [severity]="
+                        row.status === 'Approved'
+                            ? 'success'
+                            : row.status === 'Pending'
+                            ? 'warn'
+                            : 'danger'
+                    "
+                    [outlined]="true"
+                    (onClick)="showStatus(row)">
+                </p-button>
 
-                </td>
+            </td>
 
-            </tr>
+        </tr>
 
-        </ng-template>
+    </ng-template>
 
-        <!-- Empty Message
-        <ng-template pTemplate="emptymessage">
 
-            <tr>
+    <!-- Empty Message -->
+    <ng-template #emptymessage>
 
-                <td colspan="6" class="text-center">
-                    No Leave History Found
-                </td>
+        <tr>
 
-            </tr>
+            <td colspan="8">
+                No Leave History Found
+            </td>
 
-        </ng-template> -->
+        </tr>
 
-    </p-table>
+    </ng-template>
 
-</p-card>
+</p-table>

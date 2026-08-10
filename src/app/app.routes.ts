@@ -32,6 +32,23 @@ export const routes: Routes = [
             import('./features/leave/leave-history/leave-history').then(
               m => m.LeaveHistory
             )
+      },
+      {
+        path: 'attendance',
+        loadComponent: () =>
+          import('./features/attendance/attendance').then(m => m.AttendanceComponent)   
+      },
+      {
+        path: 'reports',
+        loadComponent: () =>
+          import('./features/reports/reports')
+            .then(m => m.Reports)
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./features/settings/settings')
+            .then(m => m.Settings)
       }
     ]
   }

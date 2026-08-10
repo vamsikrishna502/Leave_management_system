@@ -1,0 +1,594 @@
+<p-toast></p-toast>
+
+<div class="settings-container">
+
+    <!-- Page Header -->
+    <div class="settings-header">
+
+        <h2>Settings</h2>
+
+        <p>
+            Manage your profile, notifications, attendance and system preferences
+        </p>
+
+    </div>
+
+
+    <!-- ================= PROFILE SETTINGS ================= -->
+
+    <p-card>
+
+        <ng-template #title>
+
+            <div class="section-title">
+                <i class="pi pi-user"></i>
+                <span>Profile Settings</span>
+            </div>
+
+        </ng-template>
+
+        <ng-template #subtitle>
+            Update your personal information
+        </ng-template>
+
+
+        <div class="form-grid">
+
+            <!-- Employee ID -->
+            <div class="form-group">
+
+                <label for="employeeId">
+                    Employee ID
+                </label>
+
+                <input
+                    id="employeeId"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="profile.employeeId"
+                    disabled
+                />
+
+            </div>
+
+
+            <!-- Employee Name -->
+            <div class="form-group">
+
+                <label for="employeeName">
+                    Employee Name
+                </label>
+
+                <input
+                    id="employeeName"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="profile.employeeName"
+                />
+
+            </div>
+
+
+            <!-- Email -->
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    id="email"
+                    pInputText
+                    type="email"
+                    [(ngModel)]="profile.email"
+                />
+
+            </div>
+
+
+            <!-- Phone -->
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    id="phone"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="profile.phone"
+                />
+
+            </div>
+
+
+            <!-- Department -->
+            <div class="form-group">
+
+                <label for="department">
+                    Department
+                </label>
+
+                <input
+                    id="department"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="profile.department"
+                    disabled
+                />
+
+            </div>
+
+
+            <!-- Designation -->
+            <div class="form-group">
+
+                <label for="designation">
+                    Designation
+                </label>
+
+                <input
+                    id="designation"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="profile.designation"
+                    disabled
+                />
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <p-button
+                label="Save Profile"
+                icon="pi pi-save"
+                (onClick)="saveProfile()">
+            </p-button>
+
+        </div>
+
+    </p-card>
+
+
+    <!-- ================= SECURITY ================= -->
+
+    <p-card>
+
+        <ng-template #title>
+
+            <div class="section-title">
+                <i class="pi pi-lock"></i>
+                <span>Security</span>
+            </div>
+
+        </ng-template>
+
+        <ng-template #subtitle>
+            Manage your account security
+        </ng-template>
+
+
+        <div class="security-row">
+
+            <div>
+
+                <strong>Change Password</strong>
+
+                <p>
+                    Update your account password regularly.
+                </p>
+
+            </div>
+
+
+            <p-button
+                label="Change Password"
+                icon="pi pi-key"
+                severity="secondary"
+                [outlined]="true"
+                (onClick)="changePassword()">
+            </p-button>
+
+        </div>
+
+    </p-card>
+
+
+    <!-- ================= NOTIFICATIONS ================= -->
+
+    <p-card>
+
+        <ng-template #title>
+
+            <div class="section-title">
+                <i class="pi pi-bell"></i>
+                <span>Notifications</span>
+            </div>
+
+        </ng-template>
+
+
+        <div class="settings-list">
+
+            <!-- Email Notifications -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Email Notifications
+                    </strong>
+
+                    <p>
+                        Receive important notifications through email.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="notifications.email">
+                </p-toggleswitch>
+
+            </div>
+
+
+            <!-- Leave Updates -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Leave Updates
+                    </strong>
+
+                    <p>
+                        Get notified when your leave status changes.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="notifications.leaveUpdates">
+                </p-toggleswitch>
+
+            </div>
+
+
+            <!-- Attendance Reminder -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Attendance Reminder
+                    </strong>
+
+                    <p>
+                        Receive reminders for check-in and check-out.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="notifications.attendanceReminder">
+                </p-toggleswitch>
+
+            </div>
+
+
+            <!-- System Updates -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        System Updates
+                    </strong>
+
+                    <p>
+                        Receive system maintenance notifications.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="notifications.systemUpdates">
+                </p-toggleswitch>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <p-button
+                label="Save Notifications"
+                icon="pi pi-save"
+                (onClick)="saveNotifications()">
+            </p-button>
+
+        </div>
+
+    </p-card>
+
+
+    <!-- ================= ATTENDANCE SETTINGS ================= -->
+
+    <p-card>
+
+        <ng-template #title>
+
+            <div class="section-title">
+                <i class="pi pi-clock"></i>
+                <span>Attendance Settings</span>
+            </div>
+
+        </ng-template>
+
+
+        <div class="settings-list">
+
+            <!-- Check-in -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Check-in Reminder
+                    </strong>
+
+                    <p>
+                        Remind me when I have not checked in.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="attendance.checkInReminder">
+                </p-toggleswitch>
+
+            </div>
+
+
+            <!-- Check-out -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Check-out Reminder
+                    </strong>
+
+                    <p>
+                        Remind me before leaving the office.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="attendance.checkOutReminder">
+                </p-toggleswitch>
+
+            </div>
+
+
+            <!-- Late Arrival -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Late Arrival Notification
+                    </strong>
+
+                    <p>
+                        Notify when late check-in is detected.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="attendance.lateArrivalNotification">
+                </p-toggleswitch>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <p-button
+                label="Save Attendance Settings"
+                icon="pi pi-save"
+                (onClick)="saveAttendanceSettings()">
+            </p-button>
+
+        </div>
+
+    </p-card>
+
+
+    <!-- ================= LEAVE SETTINGS ================= -->
+
+    <p-card>
+
+        <ng-template #title>
+
+            <div class="section-title">
+                <i class="pi pi-calendar"></i>
+                <span>Leave Settings</span>
+            </div>
+
+        </ng-template>
+
+
+        <div class="settings-list">
+
+            <!-- Leave Approval -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Leave Approval Notification
+                    </strong>
+
+                    <p>
+                        Notify me when my leave is approved or rejected.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="leaveSettings.leaveApprovalNotification">
+                </p-toggleswitch>
+
+            </div>
+
+
+            <!-- Leave Balance -->
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>
+                        Leave Balance Reminder
+                    </strong>
+
+                    <p>
+                        Notify me when my leave balance is low.
+                    </p>
+
+                </div>
+
+                <p-toggleswitch
+                    [(ngModel)]="leaveSettings.leaveBalanceReminder">
+                </p-toggleswitch>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <p-button
+                label="Save Leave Settings"
+                icon="pi pi-save"
+                (onClick)="saveLeaveSettings()">
+            </p-button>
+
+        </div>
+
+    </p-card>
+
+
+    <!-- ================= SYSTEM SETTINGS ================= -->
+
+    <p-card>
+
+        <ng-template #title>
+
+            <div class="section-title">
+                <i class="pi pi-cog"></i>
+                <span>System Preferences</span>
+            </div>
+
+        </ng-template>
+
+
+        <div class="form-grid">
+
+            <!-- Language -->
+
+            <div class="form-group">
+
+                <label for="language">
+                    Language
+                </label>
+
+                <p-select
+                    inputId="language"
+                    [options]="languages"
+                    [(ngModel)]="system.language"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select Language"
+                    [style]="{ width: '100%' }">
+                </p-select>
+
+            </div>
+
+
+            <!-- Timezone -->
+
+            <div class="form-group">
+
+                <label for="timezone">
+                    Timezone
+                </label>
+
+                <p-select
+                    inputId="timezone"
+                    [options]="timezones"
+                    [(ngModel)]="system.timezone"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select Timezone"
+                    [style]="{ width: '100%' }">
+                </p-select>
+
+            </div>
+
+
+            <!-- Date Format -->
+
+            <div class="form-group">
+
+                <label for="dateFormat">
+                    Date Format
+                </label>
+
+                <p-select
+                    inputId="dateFormat"
+                    [options]="dateFormats"
+                    [(ngModel)]="system.dateFormat"
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select Date Format"
+                    [style]="{ width: '100%' }">
+                </p-select>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <p-button
+                label="Save System Settings"
+                icon="pi pi-save"
+                (onClick)="saveSystemSettings()">
+            </p-button>
+
+        </div>
+
+    </p-card>
+
+</div>

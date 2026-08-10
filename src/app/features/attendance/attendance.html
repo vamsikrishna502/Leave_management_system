@@ -1,0 +1,42 @@
+<div class="attendance-container">
+
+  <h2>Attendance</h2>
+
+  <p-table
+    [value]="attendanceList"
+    stripedRows
+    responsiveLayout="scroll">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Employee ID</th>
+        <th>Employee Name</th>
+        <th>Date</th>
+        <th>Check In</th>
+        <th>Check Out</th>
+        <th>Working Hours</th>
+        <th>Status</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-attendance>
+      <tr>
+        <td>{{ attendance.employeeId }}</td>
+        <td>{{ attendance.employeeName }}</td>
+        <td>{{ attendance.date }}</td>
+        <td>{{ attendance.checkIn }}</td>
+        <td>{{ attendance.checkOut }}</td>
+        <td>{{ attendance.workingHours }}</td>
+
+        <td>
+          <p-tag
+            [value]="attendance.status"
+            [severity]="getSeverity(attendance.status)">
+          </p-tag>
+        </td>
+      </tr>
+    </ng-template>
+
+  </p-table>
+
+</div>

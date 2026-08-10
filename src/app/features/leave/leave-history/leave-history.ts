@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 
 import { TableModule } from 'primeng/table';
-import { TagModule } from 'primeng/tag';
-import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 
 import { LeaveHistoryService } from './leave_history_serivice';
@@ -15,8 +18,6 @@ import { LeaveHistoryModel } from './leave_history_model';
   imports: [
     CommonModule,
     TableModule,
-    TagModule,
-    CardModule,
     ButtonModule
   ],
   templateUrl: './leave-history.html',
@@ -28,55 +29,60 @@ export class LeaveHistory implements OnInit {
 
   constructor(
     private leaveHistoryService: LeaveHistoryService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-
     this.loadLeaveHistory();
-   
-
   }
-
-//  showStatus(row: LeaveHistoryModel): void {
-
-//   if (row.status === 'Approved') {
-//     alert('Your leave has been approved.');
-//   }
-//   else if (row.status === 'Pending') {
-//     alert('Your leave request is pending approval.');
-//   }
-//   else if (row.status === 'Rejected') {
-//     alert('Your leave request has been rejected.');
-//   }
-
-// }
-
-showStatus(): void {
-  alert('Button clicked');
-}
 
   loadLeaveHistory(): void {
 
-  this.leaveHistoryService.getLeaveHistory().subscribe({
+    this.leaveHistoryService.getLeaveHistory().subscribe({
 
-    next: (response) => {
+      next: (response: LeaveHistoryModel[]) => {
 
-      // console.log("API Response:", response);
+        console.log('API Response:', response);
+        console.log('Number of records:', response.length);
 
-      this.leaveHistory = response;
+        this.leaveHistory = [...response];
 
-      // console.log("leaveHistory:", this.leaveHistory);
+        this.cdr.detectChanges();
+      },
 
-    },
+      error: (error) => {
 
-    error: (error) => {
+        console.error(
+          'Leave History API Error:',
+          error
+        );
 
-      console.error(error);
+      }
+
+    });
+  }
+
+  showStatus(row: LeaveHistoryModel): void {
+
+    if (row.status === 'Approved') {
+
+      alert(
+        `Leave approved for ${row.employee_name}`
+      );
+
+    } else if (row.status === 'Pending') {
+
+      alert(
+        `Leave request is pending for ${row.employee_name}`
+      );
+
+    } else if (row.status === 'Rejected') {
+
+      alert(
+        `Leave request was rejected for ${row.employee_name}`
+      );
 
     }
 
-  });
-
-}
-
+  }
 }
