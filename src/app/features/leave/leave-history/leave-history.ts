@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
 
 import { LeaveHistoryService } from './leave_history_serivice';
 import { LeaveHistoryModel } from './leave_history_model';
@@ -18,7 +19,8 @@ import { LeaveHistoryModel } from './leave_history_model';
   imports: [
     CommonModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    CardModule,
   ],
   templateUrl: './leave-history.html',
   styleUrl: './leave-history.css'

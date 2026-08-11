@@ -1,3 +1,11 @@
+:host ::ng-deep .p-card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #2563eb;
+    /* text-align: center; */
+    padding: 20px;
+}
+
 :host {
     display: block;
     padding: 20px;
