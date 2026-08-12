@@ -49,6 +49,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/settings/settings')
             .then(m => m.Settings)
+      },
+      {
+        path: 'admin-request-approval',
+        loadComponent: () =>
+          import('./features/admin-request-approval/admin-request-approval')
+            .then(m => m.AdminRequestApproval)
       }
     ]
   }

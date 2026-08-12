@@ -29,24 +29,7 @@ export class Sidebar {
       icon: 'pi pi-users',
       routerLink: ['/employees']
     },
-
-    // {
-    //   label: 'Leave Management',
-    //   icon: 'pi pi-calendar',
-    //   items: [
-    //     {
-    //       label: 'Apply Leave',
-    //       icon: 'pi pi-file-edit',
-    //       routerLink: ['/apply-leave']
-    //     },
-    //     {
-    //       label: 'Leave History',
-    //       icon: 'pi pi-history',
-    //       routerLink: ['/leave-history']
-    //     }
-    //   ]
-    // },
-      {
+    {
         label: 'Leave Management',
         icon: 'pi pi-calendar',
         items: [
@@ -61,6 +44,11 @@ export class Sidebar {
             routerLink: ['/leave-history']
           }
       ]
+    },
+    {
+      label: 'Admin Request Approval',
+      icon: 'pi pi-shield',
+      routerLink: ['/admin-request-approval']
     },
 
     {
@@ -79,7 +67,9 @@ export class Sidebar {
       label: 'Settings',
       icon: 'pi pi-cog',
       routerLink: ['/settings']
-    }
+    },
+    
+ 
 
   ];
 

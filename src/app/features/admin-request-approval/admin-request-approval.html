@@ -1,0 +1,117 @@
+<p-card header="Leave Requests">
+
+    <!-- ========================= -->
+    <!-- PENDING REQUESTS -->
+    <!-- ========================= -->
+
+    <h3 class="section-title pending-title">
+        Pending Requests
+    </h3>
+
+    <p-table
+        [value]="leaveRequests"
+        [tableStyle]="{ 'min-width': '70rem' }"
+        stripedRows
+        responsiveLayout="scroll">
+
+        <ng-template #header>
+
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Leave Type</th>
+                <th>Submitted At</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th>Total Days</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+        </ng-template>
+
+        <ng-template #body let-row>
+
+            <tr>
+
+                <td>
+                    EMP{{ row.employee_id }}
+                </td>
+
+                <td>
+                    {{ row.employee_name }}
+                </td>
+
+                <td>
+                    {{ row.leave_name }}
+                </td>
+
+                <td>
+                    {{ row.submitted_at | date:'dd-MMM-yyyy' }}
+               </td>
+
+                <td>
+                    {{ row.from_date }}
+                </td>
+
+                <td>
+                    {{ row.to_date }}
+                </td>
+
+                <td>
+                    {{ row.total_days }}
+                </td>
+
+                <td>
+                    {{ row.reason }}
+                </td>
+
+                <td>
+                    <p-tag
+                        value="Pending"
+                        severity="warn">
+                    </p-tag>
+                </td>
+
+                <td>
+
+                    <div class="action-buttons">
+
+                        <p-button
+                            label="Approve"
+                            severity="success"
+                            size="small"
+                            (onClick)="approveLeave(row)">
+                        </p-button>
+
+                        <p-button
+                            label="Reject"
+                            severity="danger"
+                            size="small"
+                            (onClick)="rejectLeave(row)">
+                        </p-button>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </ng-template>
+
+        <ng-template #emptymessage>
+
+            <tr>
+                <td colspan="9" class="empty-message">
+                    No pending leave requests.
+                </td>
+            </tr>
+
+        </ng-template>
+
+    </p-table>
+
+
+  
+</p-card>

@@ -1,0 +1,15 @@
+:host {
+    display: block;
+    padding: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 30px;
+}
